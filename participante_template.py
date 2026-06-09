@@ -44,7 +44,6 @@ class Participante:
         return 'Genero: ' + self.genero + ', NE: ' + self.nivel_edu + ', Edad: ' + str(self.edad) + ', Correctas: ' + str(self.correctas) + ', ID: ' + str(self.id)
     
     def __eq__(self, other) -> bool:
-        '''Devuelve: True si self.edad == other.edad y
-        self.correctas == other, correctas. False en caso contrario.'''
-        pass
-
+        '''Devuelve:True si p1 y p2 tienen misma edad y misma cantidad de 
+                    respuestas correctas, y False en caso contrario.'''
+        return self.edad == other.edad and self.correctas == other.correctas
