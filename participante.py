@@ -62,18 +62,21 @@ def str_a_bool(n:str) -> bool:
     else:
         return True
 
-def crear_lista_participantes(archivo:str, n:int) ->list[Participante]:
+#Por defecto, n = None, para que se pueda poner un limite opcional de participantes
+def crear_lista_participantes(archivo:str, n:int = None) ->list[Participante]:
     '''
     Req: n > 0.
     Dev: una lista de n Participantes a partir del CSV archivo.
+        Si n es None, la lista es contiene todos los Participantes de archivo
     '''
     import csv
     participantes:list[Participante] = []
     f = open(archivo)
     for linea in csv.DictReader(f):
         
-        #si la lista ya tiene n participantes, interrumpe el ciclo y la devuelve
-        if len(participantes) >= n:
+        #si n es un numero y la lista ya tiene n participantes,
+        #interrumpe el ciclo y la devuelve
+        if n != None and len(participantes) >= n:
             break
         
         #asigna todos los valores a variables individuales
