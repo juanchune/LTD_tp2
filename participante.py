@@ -62,14 +62,14 @@ def str_a_bool(n:str) -> bool:
     else:
         return True
 
-def crear_lista_participantes(n:int) ->list[Participante]:
+def crear_lista_participantes(archivo:str, n:int) ->list[Participante]:
     '''
     Req: n > 0.
-    Dev: una lista de n Participantes.
+    Dev: una lista de n Participantes a partir del CSV archivo.
     '''
     import csv
     participantes:list[Participante] = []
-    f = open('rmet.csv')
+    f = open(archivo)
     for linea in csv.DictReader(f):
         
         #si la lista ya tiene n participantes, interrumpe el ciclo y la devuelve
