@@ -9,7 +9,7 @@ def test_atributos():
     assert p1.tiene_hijos==True
     assert p1.cant_hijos==3
     assert p1.genero=='Varon'
-    assert p1.nivel_edu=='terciario completo'
+    assert p1.nivel=='terciario completo'
     assert p1.religion==85
     assert p1.politica==56
     assert p1.id==3
@@ -20,7 +20,7 @@ def test_atributos():
     assert p2.tiene_hijos==False
     assert p2.cant_hijos==0
     assert p2.genero=='Mujer'
-    assert p2.nivel_edu=='secundario completo'
+    assert p2.nivel=='secundario completo'
     assert p2.religion==2
     assert p2.politica==66
     assert p2.id==5464

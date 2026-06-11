@@ -22,17 +22,17 @@ class Participante:
             
         #nivel educativo
         if ne == 1:
-            self.nivel_edu:str = 'primario incompleto'
+            self.nivel:str = 'primario incompleto'
         elif ne == 2:
-            self.nivel_edu:str = 'primario completo'
+            self.nivel:str = 'primario completo'
         elif ne == 3:
-            self.nivel_edu:str = 'secundario completo'
+            self.nivel:str = 'secundario completo'
         elif ne == 4:
-            self.nivel_edu:str = 'terciario incompleto'
+            self.nivel:str = 'terciario incompleto'
         elif ne == 5:
-            self.nivel_edu:str = 'terciario completo'
+            self.nivel:str = 'terciario completo'
         elif ne == 6:
-            self.nivel_edu:str = 'posgrado completo'
+            self.nivel:str = 'posgrado completo'
         
         self.politica:int = pol
         self.religion:int = r
@@ -42,7 +42,7 @@ class Participante:
 
     def __repr__(self) -> str:
         '''Devuelve: una representacion en string de participante'''
-        return 'Genero: ' + self.genero + ', NE: ' + self.nivel_edu + ', Edad: ' + str(self.edad) + ', Correctas: ' + str(self.correctas) + ', ID: ' + str(self.id)
+        return 'Genero: ' + self.genero + ', NE: ' + self.nivel + ', Edad: ' + str(self.edad) + ', Correctas: ' + str(self.correctas) + ', ID: ' + str(self.id)
     
     def __eq__(self, other) -> bool:
         '''Devuelve:True si p1 y p2 tienen misma edad y misma cantidad de 

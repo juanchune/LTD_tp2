@@ -6,20 +6,22 @@ class Resumen:
         Inicializa un Resumen a partir de la lista de Participante par.
         '''
         if len(par) >= 2:
+            
             correctas:list[int]=[]
             edad:list[int]=[]
             politica:list[int]=[]
             religion:list[int]=[]
+            
             for p in par: # p  = cada participante
-                correctas.append(p.correctas) 
+                correctas.append(p.correctas)
                 edad.append(p.edad)           # se agregan los distintos datos del
                 politica.append(p.politica)   # participante a su respectiva lista 
                 religion.append(p.religion)   
-                self.participantes:list[Participante]=par
-                self.correctas:tuple[float]=(round(promedio(correctas),2), round(desvioestandar(correctas),2))
-                self.edad:tuple[float]=(round(promedio(edad),2), round(desvioestandar(edad),2))
-                self.politica:tuple[float]=(round(promedio(politica),2), round(desvioestandar(politica),2))
-                self.religiosidad:tuple[float]=(round(promedio(religion),2), round(desvioestandar(religion),2))
+            self.participantes:list[Participante]=par
+            self.correctas:tuple[float]=(round(promedio(correctas),2), round(desvioestandar(correctas),2))
+            self.edad:tuple[float]=(round(promedio(edad),2), round(desvioestandar(edad),2))
+            self.politica:tuple[float]=(round(promedio(politica),2), round(desvioestandar(politica),2))
+            self.religiosidad:tuple[float]=(round(promedio(religion),2), round(desvioestandar(religion),2))
         
     def __len__(self) -> int:
         '''
@@ -56,4 +58,4 @@ def desvioestandar(lista:list[int]) -> float:
     prom:float = promedio(lista)
     for i in lista:
         cant+= (i - prom)**2 # **2 sirve para que el número no de negativo
-    return round((cant/(len(lista) - 1))**(1/2),2) # **1/2 permite volver a la normalidad
+    return round((cant/(len(lista)-1))**(1/2),2) # **1/2 permite volver a la normalidad
