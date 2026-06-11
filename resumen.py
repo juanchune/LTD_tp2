@@ -1,4 +1,4 @@
-from participante_template import Participante
+from participante import Participante
 class Resumen:
     def __init__(self, par:list[Participante]):
         '''Inicializa un Resumen a partir de la lista de Participante par.
@@ -13,10 +13,10 @@ class Resumen:
             politica.append(p.politica)   # participante a su respectiva lista 
             religion.append(p.religion)   
         self.participantes:list[Participante]=par
-        self.correctas:tuple[float]=(round(promedio(correctas),2), round(desvioestandar(correctas),2))
-        self.edad:tuple[float]=(round(promedio(edad),2), round(desvioestandar(edad),2))
-        self.politica:tuple[float]=(round(promedio(politica),2), round(desvioestandar(politica),2))
-        self.religiosidad:tuple[float]=(round(promedio(religion),2), round(desvioestandar(religion),2))
+        self.correctas:tuple[float]=(promedio(correctas), desvioestandar(correctas))
+        self.edad:tuple[float]=(promedio(edad), desvioestandar(edad))
+        self.politica:tuple[float]=(promedio(politica), desvioestandar(politica))
+        self.religiosidad:tuple[float]=(promedio(religion), desvioestandar(religion))
         
     def __len__(self) -> int:
         '''
@@ -41,7 +41,7 @@ def promedio(lista:list[int])->float:
     cant:int = 0
     for i in lista:
         cant+=i
-    return cant/len(lista)
+    return round(cant/len(lista),2)
 
 def desvioestandar(lista:list[int]) -> float:
     '''
@@ -53,4 +53,4 @@ def desvioestandar(lista:list[int]) -> float:
     prom:float = promedio(lista)
     for i in lista:
         cant+= (i - prom)**2 # **2 sirve para que el número no de negativo
-    return (cant/(len(lista) - 1))**(1/2) # **1/2 permite volver a la normalidad
+    return round((cant/(len(lista) - 1))**(1/2),2) # **1/2 permite volver a la normalidad
