@@ -1,0 +1,8 @@
+nota rapida
+pendientes:
+-hacer el dataset_test.py y revisar si hace falta
+-justificar complejidad algoritmica de:
+	-__len__ de clase dataset O(1) -> por documentación de Python len(list) es O(1)
+	-participantes_en_rango_etario de dataset O(N) -> un ciclo q se ejecuta en O(len(self.participantes)) -> O(N)
+	-resumenes_NE de dataset O(N) donde N es la cantidad de participantes -> si bien hay dos ciclos y a priori es O(N^2), el primer ciclo se ejecuta, en el peor de los casos, 6 veces, o sea O(6), lo que deriva en O(1). el otro ciclo si es O(N)
+	-participantes_mayores_notas de dataset O(N) -> 2 ciclos pero separados, no anidados

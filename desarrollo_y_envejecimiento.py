@@ -14,7 +14,7 @@ for edad in range(100):
     if len(parts) > 25:
         resumen_de_edad:Resumen = Resumen(parts)
         promedios.append(resumen_de_edad.correctas[0])
-        errores.append(resumen_de_edad.correctas[1]/len(resumen_de_edad)**0.5)
+        errores.append(resumen_de_edad.correctas[1]/resumen_de_edad.cantidad**0.5)
         edades.append(edad)
     
 # Gráfico

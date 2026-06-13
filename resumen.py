@@ -16,12 +16,15 @@ class Resumen:
                 correctas.append(p.correctas)
                 edad.append(p.edad)           # se agregan los distintos datos del
                 politica.append(p.politica)   # participante a su respectiva lista 
-                religion.append(p.religion)   
+                religion.append(p.religion) 
+
             self.participantes:list[Participante]=par
             self.correctas:tuple[float]=(round(promedio(correctas),2), round(desvioestandar(correctas),2))
             self.edad:tuple[float]=(round(promedio(edad),2), round(desvioestandar(edad),2))
             self.politica:tuple[float]=(round(promedio(politica),2), round(desvioestandar(politica),2))
             self.religiosidad:tuple[float]=(round(promedio(religion),2), round(desvioestandar(religion),2))
+            
+            self.cantidad:int = len(self)
         
     def __len__(self) -> int:
         '''

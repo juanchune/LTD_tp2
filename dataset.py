@@ -57,17 +57,37 @@ class DataSet:
                 res.pop(i)
         return res
 
-    def exportar_por_edad(self):
-        ''' completar docstring '''
-        pass
-    
-    ## y asi con el resto de los metodos
+    def exportar_por_edad(self, archivo_csv:str, edad1, edad2):
+        ''' Req: 0 < edad1 < edad2.
+            Genera un csv con nombre archivo_csv con un resumen
+            de cada edad entre edad1 y edad2 (inclusives). '''
+        #abrimos el archivo en modo escritura
+        f = open(archivo_csv, 'w')
+        
+        #ingresamos los campos que va a tener el archivo
+        f.write('edad,cantidad_participantes,promedio_correctas,promedio_religiosidad,promedio_politica\n')
+        
+        #hacemos una lista y un resumen para cada edad en el rango
+        #edad1, edad2+1 (edad2+1 es para incluir el valor de edad2)
+        for i in range(edad1, edad2+1):
+            part:list[p.Participante] = self.participantes_en_rango_etario(edad1, i)
+            res:r.Resumen = r.Resumen(part)
+            
+            #definimos las variables para escribir en el archivo
+            edad:str = str(i) + ','
+            cant_par:str = str(res.cantidad) + ','
+            prom_corr:str = str(res.correctas[0]) + ','
+            prom_rel:str = str(res.religiosidad[0]) + ','
+            prom_pol:str = str(res.politica[0])
+            
+            #escribimos
+            f.write(edad + cant_par + prom_corr + prom_rel + prom_pol + '\n')
+
+        f.close()
 
 
-p1:list[p.Participante] = p.crear_lista_participantes('rmet.csv', 5)
-print(len(p1))
-r1:r.Resumen = r.Resumen(p1)
+#prueba de que escribe
 dt:DataSet = DataSet('rmet.csv')
-d:dict[str, r.Resumen] = dt.resumenes_NE()
-for i in d:
-    print(i, ': ', d[i])
+dt.exportar_por_edad('prueba.csv', 15, 18)
+
+
