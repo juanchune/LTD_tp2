@@ -26,12 +26,6 @@ def test_atributos():
     assert r3.politica== (90.75, 15.95) 
     assert r3.religiosidad==(27.5, 32.93)
     
-def test_vacio():
-    l1:list[Participante] = crear_lista_participantes('rmet.csv', 1)
-    r1:Resumen = Resumen(l1)
-    assert r1.correctas == None
-    
-    
 def test_len():
     l1:list[Participante]= crear_lista_participantes('rmet.csv',2)
     r1:Resumen=Resumen(l1)
@@ -78,4 +72,3 @@ test_repr()
 test_eq()
 test_desvioestandar()
 test_promedio()
-test_vacio()

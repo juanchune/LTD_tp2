@@ -2,7 +2,6 @@ from participante import Participante
 from participante import str_a_bool
 from participante import crear_lista_participantes
 
-
 def test_atributos():
     p1:Participante=Participante(25, 1, 3, 1, 5, 85, 56, 3, 8)
     assert p1.edad==25
@@ -48,8 +47,8 @@ def test_str_a_bool():
 
 
 def test_lista_participantes():
-    p1:list[Participante]=crear_lista_participantes(2)
-    p2:list[Participante]=crear_lista_participantes(0)
+    p1:list[Participante]=crear_lista_participantes('rmet.csv', 2)
+    p2:list[Participante]=crear_lista_participantes('rmet.csv', 0)
     assert str(p1)== '[Genero: Varon, NE: posgrado completo, Edad: 26, Correctas: 8, ID: 1, Genero: Varon, NE: terciario completo, Edad: 26, Correctas: 9, ID: 2]'
     assert str(p2)== '[]'
     
