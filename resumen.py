@@ -5,26 +5,25 @@ class Resumen:
         Req: len(par) >= 2.
         Inicializa un Resumen a partir de la lista de Participante par.
         '''
-        if len(par) >= 2:
             
-            correctas:list[int]=[]
-            edad:list[int]=[]
-            politica:list[int]=[]
-            religion:list[int]=[]
-            
-            for p in par: # p  = cada participante
-                correctas.append(p.correctas)
-                edad.append(p.edad)           # se agregan los distintos datos del
-                politica.append(p.politica)   # participante a su respectiva lista 
-                religion.append(p.religion) 
+        correctas:list[int]=[]
+        edad:list[int]=[]
+        politica:list[int]=[]
+        religion:list[int]=[]
+        
+        for p in par: # p  = cada participante
+            correctas.append(p.correctas)
+            edad.append(p.edad)           # se agregan los distintos datos del
+            politica.append(p.politica)   # participante a su respectiva lista 
+            religion.append(p.religion) 
 
-            self.participantes:list[Participante]=par
-            self.correctas:tuple[float]=(round(promedio(correctas),2), round(desvioestandar(correctas),2))
-            self.edad:tuple[float]=(round(promedio(edad),2), round(desvioestandar(edad),2))
-            self.politica:tuple[float]=(round(promedio(politica),2), round(desvioestandar(politica),2))
-            self.religiosidad:tuple[float]=(round(promedio(religion),2), round(desvioestandar(religion),2))
+        self.participantes:list[Participante]=par
+        self.correctas:tuple[float]=(promedio(correctas), desvioestandar(correctas))
+        self.edad:tuple[float]=(promedio(edad), desvioestandar(edad))
+        self.politica:tuple[float]=(promedio(politica), desvioestandar(politica))
+        self.religiosidad:tuple[float]=(promedio(religion), desvioestandar(religion))
             
-            self.cantidad:int = len(self)
+        self.cantidad:int = len(self)
         
     def __len__(self) -> int:
         '''

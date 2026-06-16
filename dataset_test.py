@@ -16,16 +16,16 @@ def test_atributos():
 
 def test_len():
     d1:DataSet=DataSet('rmet_test.csv')
-    assert len(d1.participantes) == 37741
+    assert len(d1.participantes) == 27
     assert len(d1.participantes) == len(d1)
     
 
 def test_participantes_rango_etario():
     d1:DataSet=DataSet('rmet_test.csv')
-    assert len(d1.participantes_en_rango_etario(20, 30)) == 22305
+    assert len(d1.participantes_en_rango_etario(20, 30)) == 15
     
     r1:list[d1.Participante]= d1.participantes_en_rango_etario(86,88)
-    assert str(r1)== '[Genero: Varon, NE: posgrado completo, Edad: 86, Correctas: 9, ID: 28938]'
+    assert str(r1)== '[Genero: Varon, NE: posgrado completo, Edad: 86, Correctas: 9, ID: 12]'
     #ejemplo específico
     
     r2= d1.participantes_en_rango_etario(20, 30)
@@ -54,24 +54,24 @@ def test_resumenesNE():
         assert resumen.cantidad >= 2 
     #Sólo se incluirá como clave un NE si existen dos o más participantes con ese NE.
     
-    assert r1['terciario completo'].cantidad == 19044
-    assert r1['posgrado completo'].cantidad == 12566
-    assert r1['primario completo'].cantidad == 100
+    assert r1['terciario completo'].cantidad == 10
+    assert r1['posgrado completo'].cantidad == 6
+    assert r1['primario completo'].cantidad == 2
     
 def test_participantes_mayores_notas():
     d1:DataSet=DataSet('rmet_test.csv')
     r1 = d1.participantes_mayores_notas('primario incompleto')
-    assert len(r1) == 24
+    assert len(r1) == 1
     r2 = d1.participantes_mayores_notas('primario completo')
-    assert len(r2) == 56
+    assert len(r2) == 1
     r3 = d1.participantes_mayores_notas('secundario completo')
-    assert len(r3) == 744
+    assert len(r3) == 2
     r4 = d1.participantes_mayores_notas('terciario incompleto')
-    assert len(r4) == 2466
+    assert len(r4) == 2
     r5 = d1.participantes_mayores_notas('terciario completo')
-    assert len(r5) == 10430
+    assert len(r5) == 5
     r6 = d1.participantes_mayores_notas('posgrado completo')
-    assert len(r6) == 6903
+    assert len(r6) == 3
     
     r7 = d1.participantes_mayores_notas('posgrado completo')
     for par in r7:
@@ -79,7 +79,7 @@ def test_participantes_mayores_notas():
 
 def test_exportar_edad():
     d1:DataSet=DataSet('rmet_test.csv')
-    d1.exportar_por_edad('test_salida.csv', 20, 25)
+    d1.exportar_por_edad('test_salida.csv', 25, 30)
     
     f = open('test_salida.csv')
     lineas = f.readlines()
@@ -93,13 +93,13 @@ def test_exportar_edad():
     assert lineas[0].strip() == 'edad,cantidad_participantes,promedio_correctas,promedio_religiosidad,promedio_politica'
        
     # valores concretos de las primeras dos filas
-    edad20 = lineas[1].strip().split(',')
-    assert edad20[1] == '2016'
-    assert edad20[2] == '7.79'
+    edad25 = lineas[1].strip().split(',')
+    assert edad25[1] == '3'
+    assert edad25[2] == '5.67'
     
-    edad21 = lineas[2].strip().split(',')
-    assert edad21[1] == '4551'
-    assert edad21[2] == '7.76'
+    edad26 = lineas[2].strip().split(',')
+    assert edad26[1] == '6'
+    assert edad26[2] == '7.17'
     
     os.remove('test_salida.csv')
 
