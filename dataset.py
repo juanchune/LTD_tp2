@@ -84,10 +84,3 @@ class DataSet:
             f.write(edad + cant_par + prom_corr + prom_rel + prom_pol + '\n')
 
         f.close()
-
-
-#prueba de que escribe
-dt:DataSet = DataSet('rmet.csv')
-dt.exportar_por_edad('prueba.csv', 15, 18)
-
-

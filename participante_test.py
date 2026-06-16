@@ -47,8 +47,8 @@ def test_str_a_bool():
 
 
 def test_lista_participantes():
-    p1:list[Participante]=crear_lista_participantes('rmet.csv', 2)
-    p2:list[Participante]=crear_lista_participantes('rmet.csv', 0)
+    p1:list[Participante]=crear_lista_participantes('rmet_test.csv', 2)
+    p2:list[Participante]=crear_lista_participantes('rmet_test.csv', 0)
     assert str(p1)== '[Genero: Varon, NE: posgrado completo, Edad: 26, Correctas: 8, ID: 1, Genero: Varon, NE: terciario completo, Edad: 26, Correctas: 9, ID: 2]'
     assert str(p2)== '[]'
     
