@@ -6,7 +6,7 @@ class DataSet:
     def __init__(self, archivo_csv:str):
         ''' Inicializa un objeto de la clase Dataset a partir del csv
         archivo_csv'''
-        self.participantes:list[p.Participante] = p.crear_lista_participantes('rmet.csv')
+        self.participantes:list[p.Participante] = p.crear_lista_participantes(archivo_csv)
         self.niveles:set[str] = set()
         for i in self.participantes:
             self.niveles.add(i.nivel)
@@ -54,7 +54,7 @@ class DataSet:
         resumen_ne:r.Resumen = r.Resumen(res)
         for i in res:
             if i.correctas <= int(resumen_ne.correctas[0] + resumen_ne.correctas[1]):
-                res.pop(i)
+                res.remove(i)
         return res
 
     def exportar_por_edad(self, archivo_csv:str, edad1, edad2):
